@@ -1,21 +1,23 @@
 <div class="site-index">
-    <h1>Welcome to Pakk</h1>
+    <p align="center">
+      <img width="300" src="https://github.com/teamtimer/pakk-hook/blob/master/logo.png?raw=true">
+    </p>
+    <h1 align="center">Welcome to Pakk</h1>
+    <p align="center">
+    <i>A really simple MVC framework for WordPress</i>
+    </p>
     <h2>Table of contents: </h2>
     <ul>
+        <li><a href="#how-to-install">How to install</a></li>
         <li><a href="#how-to-use-pakk">How to use Pakk</a></li>
         <li><a href="#basic-lifecycle">Basic lifecycle</a></li>
         <li><a href="#creating-controllers">Creating controllers</a></li>
         <li><a href="#creating-views">Creating views</a></li>
         <li><a href="#creating-models-entities">Creating models (entities)</a></li>
     </ul>
-    <h2>How to install</h2>
+    <h2>How to install (Automatic)</h2>
     <p>
-    1. Install <a href="https://getcomposer.org/">Composer</a><br>
-    2. Download the source code from here<br>
-    3. Copy the <code>src</code> folder to your project folder<br>
-    4. Copy the composer.json file to your project folder<br>
-    5. Run <code>composer install</code> in your project folder<br>
-    6. Copy the pakk-hook.php file to <code>/wp-content/mu-plugins</code>, you can find it here <a href="https://raw.githubusercontent.com/teamtimer/pakk-hook/master/pakk-hook.php">https://raw.githubusercontent.com/teamtimer/pakk-hook/master/pakk-hook.php</a><br>
+    Follow the installation instructions <a href="https://github.com/teamtimer/pakk-hook">here</a>.
     </p>
     <hr>
     <h2> How to use Pakk </h2>
