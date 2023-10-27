@@ -1,0 +1,52 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__.'/../vendor/autoload.php';
+
+require __DIR__ . '/../vendor/teamtimer/pakk-core/src/App.php';
+
+$cwd = getcwd(); // this should not follow symlinks, but it might not work on the web
+$current_dir = dirname(__DIR__); // this follows symlinks
+
+if ($cwd !== $current_dir) {
+    /** we're running a dev environment */
+    /** make sure to forward port 3306 from the container */
+    define('ABSPATH', $cwd . '/');
+    define('DB_NAME', 'wordpress');
+    define('DB_USER', 'root');
+    define('DB_PASSWORD', 'root');
+    define('DB_HOST', '127.0.0.1');
+    define('DB_CHARSET', 'utf8');
+    define('DB_COLLATE', '');
+}else{
+    define('ABSPATH', __DIR__ . '/../');
+    __wp_autodefine();
+}
+
+// initialize the app
+$app = new \TeamTimer\Pakk\App();
+$app->init();
+
+
+function __wp_autodefine(){
+
+    $wp_config = file_get_contents(ABSPATH . 'wp-config.php');
+
+    $definitions = [
+        'DB_NAME',
+        'DB_USER',
+        'DB_PASSWORD',
+        'DB_HOST',
+        'DB_CHARSET',
+        'DB_COLLATE',
+    ];
+
+    foreach ($definitions as $definition) {
+        if (defined($definition) == false) {
+            $pattern = '/define\( \'' . $definition . '\', \'(.*)\' \);/';
+            preg_match($pattern, $wp_config, $matches);
+            $value = $matches[1];
+            define($definition, $value);
+        }
+    }
+}
