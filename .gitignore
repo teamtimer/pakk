@@ -1,2 +1,5 @@
 # ignore Jetbrains IntelliJ stuff
 .idea
+
+# ignore dev environment symlinked stuff
+vendor
